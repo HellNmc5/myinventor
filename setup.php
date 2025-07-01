@@ -94,12 +94,5 @@ function plugin_myinvent_check_prerequisites()
  */
 function plugin_myinvent_check_config($verbose = false)
 {
-    if (true) { // Your configuration check
-        return true;
-    }
-
-    if ($verbose) {
-        echo __('Installed / not configured', 'myinvent');
-    }
-    return false;
+    return true;
 }
