@@ -2,27 +2,26 @@
    <name>myinvent</name>
    <key>myinvent</key>
    <!-- stable, beta, development, alpha, ... -->
-   <state>stable</state>
+   <state>alpha</state>
    <logo>https://raw.githubusercontent.com/pluginsGLPI/myinvent/master/{LNAME}.png</logo>
    <description>
       <short>
          <!-- Add as many lang tag you want -->
          <en>myinvent GLPI plugin.</en>
-         <fr>Plugin GLPI myinvent</fr>
       </short>
       <long>
          <!-- Add as many lang tag you want -->
          <en>A long description for myinvent GLPI plugin.</en>
-         <fr>Un description longue pour le plugin GLPI myinvent</fr>
       </long>
    </description>
-   <homepage>https://github.com/pluginsGLPI/myinvent</homepage>
-   <download>https://github.com/pluginsGLPI/myinvent/releases</download>
-   <issues>https://github.com/pluginsGLPI/myinvent/issues</issues>
-   <readme>https://github.com/pluginsGLPI/myinvent/blob/master/README.md</readme>
+   <homepage>https://github.com/HellNmc5/myinventor</homepage>
+   <download>https://github.com/HellNmc5/myinventor/releases</download>
+   <issues>https://github.com/HellNmc5/myinventor/issues</issues>
+   <readme>https://github.com/HellNmc5/myinventor/blob/main/README.md</readme>
    <authors>
       <!-- Add as many author tag you want -->
-      <author>Teclib'</author>
+      <author>HellNmc5</author>
+      <author>scorpOl</author>
    </authors>
    <versions>
       <!-- Add as many version tag you want -->
@@ -37,7 +36,6 @@
    <langs>
       <!-- Add as many lang tag you want -->
       <lang>en_GB</lang>
-      <lang>fr_FR</lang>
    </langs>
    <license>GPL V3+</license>
    <!--tags>
