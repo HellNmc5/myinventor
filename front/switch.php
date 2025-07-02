@@ -1,7 +1,7 @@
 <?php
     include ('../../../inc/includes.php');
 
-    Session::checkRight('plugin_myinventor', READ);
+    Session::checkRight('config', READ);
 
     Html::header(__('Switches', 'myinventor'), $_SERVER['PHP_SELF'], 'plugins', 'myinventor');
 

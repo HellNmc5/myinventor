@@ -29,22 +29,38 @@
  * --------------------------------------------------------------------------
  */
 
-function plugin_myinventor_getMenuContent() {
-    return [
-        'title' => __('My Inventor', 'myinventor'),
-        'page'  => '/plugins/myinventor/front/switch.php'
-    ];
+function plugin_myinventor_install() {
+    global $DB;
+
+    $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_myinventor_switches` (
+                `id` INT AUTO_INCREMENT PRIMARY KEY,
+                `name` VARCHAR(255) NOT NULL,
+                `ip` VARCHAR(255),
+                `model` VARCHAR(255),
+                `location` VARCHAR(255)
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+    $DB->queryOrDie($query, "Error creating switches table");
+
+    $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_myinventor_ports` (
+                `id` INT AUTO_INCREMENT PRIMARY KEY,
+                `switch_id` INT NOT NULL,
+                `port_number` VARCHAR(255) NOT NULL,
+                `mac_address` VARCHAR(255),
+                `status` VARCHAR(255),
+                FOREIGN KEY (`switch_id`) REFERENCES `glpi_plugin_myinventor_switches`(`id`) ON DELETE CASCADE
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+    $DB->queryOrDie($query, "Error creating ports table");
+
+    return true;
 }
 
-function plugin_myinventor_getMenuName() {
-    return __('My Inventor', 'myinventor');
-}
+function plugin_myinventor_uninstall() {
+    global $DB;
 
-// File: inc/menu.php
+    $DB->queryOrDie("DROP TABLE IF EXISTS `glpi_plugin_myinventor_ports`", "Error dropping ports table");
+    $DB->queryOrDie("DROP TABLE IF EXISTS `glpi_plugin_myinventor_switches`", "Error dropping switches table");
 
-function plugin_myinventor_getMenu() {
-    return [
-        'title' => __('Switches', 'myinventor'),
-        'page'  => '/plugins/myinventor/front/switch.php'
-    ];
+    return true;
 }
+?>
+
