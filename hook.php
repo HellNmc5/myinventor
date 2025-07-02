@@ -29,22 +29,22 @@
  * --------------------------------------------------------------------------
  */
 
-/**
- * Plugin install process
- *
- * @return boolean
- */
-function plugin_myinvent_install()
-{
-    return true;
+function plugin_myinventor_getMenuContent() {
+    return [
+        'title' => __('My Inventor', 'myinventor'),
+        'page'  => '/plugins/myinventor/front/switch.php'
+    ];
 }
 
-/**
- * Plugin uninstall process
- *
- * @return boolean
- */
-function plugin_myinvent_uninstall()
-{
-    return true;
+function plugin_myinventor_getMenuName() {
+    return __('My Inventor', 'myinventor');
+}
+
+// File: inc/menu.php
+
+function plugin_myinventor_getMenu() {
+    return [
+        'title' => __('Switches', 'myinventor'),
+        'page'  => '/plugins/myinventor/front/switch.php'
+    ];
 }

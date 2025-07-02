@@ -36,63 +36,43 @@ define("PLUGIN_MYINVENT_MIN_GLPI_VERSION", "10.0.0");
 // Maximum GLPI version, exclusive
 define("PLUGIN_MYINVENT_MAX_GLPI_VERSION", "10.0.99");
 
-/**
- * Init hooks of the plugin.
- * REQUIRED
- *
- * @return void
- */
-function plugin_init_myinvent()
-{
-    global $PLUGIN_HOOKS;
 
-    // Добавляем пункт в меню
-    $PLUGIN_HOOKS['menu_toadd']['myinvent'] = ['plugins' => 'myinvent/menu.php'];
-}
+function plugin_myinventor_install() {
+    global $DB;
 
+    // Create switches table
+    $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_myinventor_switches` (
+                `id` INT NOT NULL AUTO_INCREMENT,
+                `name` VARCHAR(255) NOT NULL,
+                `ip_address` VARCHAR(255) NOT NULL,
+                `community` VARCHAR(255) DEFAULT 'public',
+                `comment` TEXT,
+                PRIMARY KEY (`id`)
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+    $DB->queryOrDie($query, "Create switches table");
 
-/**
- * Get the name and the version of the plugin
- * REQUIRED
- *
- * @return array
- */
-function plugin_version_myinvent()
-{
-    return [
-        'name'           => 'myinvent',
-        'version'        => PLUGIN_MYINVENT_VERSION,
-        'author'         => 'HellNmc',
-        'license'        => 'GPLv3+',
-        'homepage'       => '',
-        'requirements'   => [
-            'glpi' => [
-                'min' => PLUGIN_MYINVENT_MIN_GLPI_VERSION,
-                'max' => PLUGIN_MYINVENT_MAX_GLPI_VERSION,
-            ]
-        ]
-    ];
-}
+    // Create ports table
+    $query = "CREATE TABLE IF NOT EXISTS `glpi_plugin_myinventor_ports` (
+                `id` INT NOT NULL AUTO_INCREMENT,
+                `switch_id` INT NOT NULL,
+                `port_number` VARCHAR(255) NOT NULL,
+                `mac_address` VARCHAR(255) NOT NULL,
+                `comment` TEXT,
+                `last_update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (`id`),
+                FOREIGN KEY (`switch_id`) REFERENCES `glpi_plugin_myinventor_switches`(`id`) ON DELETE CASCADE
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+    $DB->queryOrDie($query, "Create ports table");
 
-/**
- * Check pre-requisites before install
- * OPTIONNAL, but recommanded
- *
- * @return boolean
- */
-function plugin_myinvent_check_prerequisites()
-{
     return true;
 }
 
-/**
- * Check configuration process
- *
- * @param boolean $verbose Whether to display message on failure. Defaults to false
- *
- * @return boolean
- */
-function plugin_myinvent_check_config($verbose = false)
-{
+function plugin_myinventor_uninstall() {
+    global $DB;
+
+    $DB->query("DROP TABLE IF EXISTS `glpi_plugin_myinventor_ports`");
+    $DB->query("DROP TABLE IF EXISTS `glpi_plugin_myinventor_switches`");
+
     return true;
 }
+
