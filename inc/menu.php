@@ -1,12 +1,9 @@
 <?php
 
-function plugin_pcinfo_getMenuItems() {
+function plugin_myinventor_getMenu() {
     return [
-        'plugins' => [
-            'title' => 'PC Info',
-            'page'  => '/plugins/pcinfo/front/mypage.php',
-            'options' => []
-        ]
+        'title' => __('Switches', 'myinventor'),
+        'page'  => '/plugins/myinventor/front/switch.php'
     ];
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-    include (GLPI_ROOT . '/inc/includes.php');
+    include ('../../../inc/includes.php');
 
     Session::checkRight('plugin_myinventor', READ);
 
