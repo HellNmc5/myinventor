@@ -1,35 +1,15 @@
 <?php
 
-/**
- * -------------------------------------------------------------------------
- * myinvent plugin for GLPI
- * Copyright (C) 2025 by the myinvent Development Team.
- * -------------------------------------------------------------------------
- *
- * MIT License
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * --------------------------------------------------------------------------
- */
-
-// plugins/myinventor/hook.php
+function plugin_version_myinventor() {
+    return [
+        'name'           => 'My Inventor',
+        'version'        => '1.0.0',
+        'author'         => 'Your Name',
+        'license'        => 'GPLv2+',
+        'homepage'       => 'https://github.com/HellNmc5/myinventor',
+        'minGlpiVersion' => '10.0.0',
+    ];
+}
 
 function plugin_myinventor_install() {
     return true;
@@ -38,6 +18,3 @@ function plugin_myinventor_install() {
 function plugin_myinventor_uninstall() {
     return true;
 }
-
-
-
