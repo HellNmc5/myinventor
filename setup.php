@@ -29,45 +29,22 @@
  * --------------------------------------------------------------------------
  */
 
-define('PLUGIN_MYINVENT_VERSION', '0.0.1');
-
-// Minimal GLPI version, inclusive
-define("PLUGIN_MYINVENT_MIN_GLPI_VERSION", "10.0.0");
-// Maximum GLPI version, exclusive
-define("PLUGIN_MYINVENT_MAX_GLPI_VERSION", "10.0.99");
 
 
+return [
+    'plugin_myinventor1' => [ // ключ — обязательно plugin_ + название папки плагина
+        'class'   => 'PluginMyinventor1', // имя основного класса плагина (может быть фиктивным, если класс еще не используешь)
+        'name'    => 'My Inventor 1',     // название плагина
+        'version' => '1.0.0',             // версия плагина
+        'author'  => 'Your Name',         // автор
+        'license' => 'GPLv2+',            // лицензия
+        'homepage' => 'https://yourwebsite.com', // ссылка на сайт/документацию
+
+        // ⚙️ Минимально необходимые методы:
+        'install'   => 'plugin_myinventor1_install',
+        'uninstall' => 'plugin_myinventor1_uninstall'
+    ]
+];
 
 
-// plugins/myinventor/setup.php
-
-function plugin_init_myinventor() {
-    global $PLUGIN_HOOKS;
-
-    $PLUGIN_HOOKS['csrf_compliant']['myinventor'] = true;
-
-    $PLUGIN_HOOKS['menu_toadd']['myinventor'] = [
-        'plugins' => 'menu.php'
-    ];
-}
-
-function plugin_version_myinventor() {
-    return [
-        'name'           => 'MyInventor',
-        'version'        => '1.0.0',
-        'author'         => 'Your Name',
-        'license'        => 'GPLv3+',
-        'homepage'       => 'https://yourprojectsite.com',
-        'minGlpiVersion' => '10.0.0'
-    ];
-}
-
-function plugin_myinventor_check_prerequisites() {
-    return true;
-}
-
-function plugin_myinventor_check_config() {
-    return true;
-}
-?>
 

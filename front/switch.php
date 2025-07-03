@@ -9,4 +9,3 @@
     echo "<a class='btn btn-primary' href='switch.form.php'>Добавить коммутатор</a>";
 
     Html::footer();
-?>

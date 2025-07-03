@@ -9,4 +9,3 @@
     echo "<a class='btn btn-primary' href='port.form.php'>Добавить порт</a>";
 
     Html::footer();
-?>

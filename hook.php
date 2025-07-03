@@ -39,5 +39,5 @@ function plugin_myinventor_uninstall() {
     return true;
 }
 
-?>
+
 
