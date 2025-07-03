@@ -38,20 +38,26 @@ define("PLUGIN_MYINVENT_MAX_GLPI_VERSION", "10.0.99");
 
 
 
+
+// plugins/myinventor/setup.php
+
 function plugin_init_myinventor() {
     global $PLUGIN_HOOKS;
 
-    $PLUGIN_HOOKS['menu_entry']['myinventor'] = true;
     $PLUGIN_HOOKS['csrf_compliant']['myinventor'] = true;
+
+    $PLUGIN_HOOKS['menu_toadd']['myinventor'] = [
+        'plugins' => 'menu.php'
+    ];
 }
 
 function plugin_version_myinventor() {
     return [
-        'name' => 'MyInventor',
-        'version' => '1.0.0',
-        'author' => 'Your Name',
-        'license' => 'GPLv3+',
-        'homepage' => 'https://github.com/HellNmc5/myinventor',
+        'name'           => 'MyInventor',
+        'version'        => '1.0.0',
+        'author'         => 'Your Name',
+        'license'        => 'GPLv3+',
+        'homepage'       => 'https://yourprojectsite.com',
         'minGlpiVersion' => '10.0.0'
     ];
 }

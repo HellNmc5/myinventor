@@ -1,8 +1,14 @@
 <?php
-function plugin_myinventor_getMenuContent() {
+// plugins/myinventor/menu.php
+
+function plugin_myinventor_getMenu() {
     return [
-        'title' => __('My Inventor', 'myinventor'),
-        'page'  => '/plugins/myinventor/front/switch.php'
+        'title' => 'MyInventor',
+        'page'  => '/plugins/myinventor/front/switch.php',
+        'links' => [
+            'Switches' => '/plugins/myinventor/front/switch.php',
+            'Ports'    => '/plugins/myinventor/front/port.php',
+        ]
     ];
 }
 ?>

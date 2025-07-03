@@ -1,11 +1,12 @@
 <?php
+    // plugins/myinventor/front/switch.php
+
     include ('../../../inc/includes.php');
 
-    Session::checkRight('config', READ);
+    Html::header('Switches', $_SERVER['PHP_SELF'], 'plugins', 'myinventor');
 
-    Html::header(__('Switches', 'myinventor'), $_SERVER['PHP_SELF'], 'plugins', 'myinventor');
-
-    Search::show('PluginMyinventorSwitch');
+    echo "<h2>Список коммутаторов</h2>";
+    echo "<a class='btn btn-primary' href='switch.form.php'>Добавить коммутатор</a>";
 
     Html::footer();
 ?>
