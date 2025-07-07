@@ -22,4 +22,14 @@
     function plugin_myinventor_check_config() {
         return true;
     }
+    
+    function plugin_init_myinventor() {
+    global $PLUGIN_HOOKS;
 
+    // ✅ Это говорит GLPI, что плагин поддерживает CSRF
+    $PLUGIN_HOOKS['csrf_compliant']['myinventor'] = true;
+
+    // Если у тебя есть свои классы, регистрируй их здесь, например:
+    // Plugin::registerClass('PluginMyinventorPort');
+    // Plugin::registerClass('PluginMyinventorSwitch');
+}
